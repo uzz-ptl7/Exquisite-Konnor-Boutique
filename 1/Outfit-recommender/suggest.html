@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Code Recommendation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <div class="container mx-auto p-6">
+
+        <!-- Card Container -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+
+            <!-- Large Screen Layout (Three Sections) -->
+            <div class="lg:flex lg:space-x-6 mt-8">
+                <!-- Left Section (Input Fields) -->
+                <div class="lg:w-1/3 w-full mx-auto bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Dress Code Recommendation</h2>
+
+                    <!-- Input Fields -->
+                    <div class="space-y-4">
+                        <label for="weather" class="block text-gray-700">Weather:</label>
+                        <select id="weather" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="hot">Hot</option>
+                            <option value="cold">Cold</option>
+                            <option value="rainy">Rainy</option>
+                        </select>
+
+                        <label for="event-type" class="block text-gray-700">Event Type:</label>
+                        <select id="event-type" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="formal">Formal</option>
+                            <option value="casual">Casual</option>
+                            <option value="party">Party</option>
+                        </select>
+
+                        <label for="style" class="block text-gray-700">Style:</label>
+                        <select id="style" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="classic">Classic</option>
+                            <option value="trendy">Trendy</option>
+                            <option value="sporty">Sporty</option>
+                        </select>
+
+                        <label for="time-of-day" class="block text-gray-700">Time of Day:</label>
+                        <select id="time-of-day" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="day">Day</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Center Section -->
+                <div class="lg:w-1/3 flex flex-col items-center justify-center text-center">
+                    <h2 class="text-2xl font-semibold mb-4">Find Your Perfect Outfit</h2>
+                    <p class="mb-4">Answer the questions on the left, and we'll suggest a perfect outfit based on your
+                        preferences!</p>
+                    <div class="flex items-center space-x-2">
+                        <div class="text-gray-500">←</div>
+                        <span class="text-gray-700 font-semibold">Your Outfit Style</span>
+                        <div class="text-gray-500">→</div>
+                    </div>
+                </div>
+
+                <!-- Right Section -->
+                <div class="lg:w-1/3 flex flex-col items-center justify-center text-center">
+                    <h3 class="text-xl font-semibold mb-4">Ready to get your recommendation?</h3>
+                    <!-- Get Recommendation Button (Only visible on large screens) -->
+                    <button id="get-recommendation" class="w-full p-2 bg-purple-500 text-white rounded-md">Get
+                        Recommendation</button>
+
+                    <!-- Skeleton Animation -->
+                    <div id="skeleton" class="hidden mt-4 w-full bg-gray-300 h-12 rounded-md animate-pulse"></div>
+
+                    <!-- Recommended Outfit -->
+                    <div id="outfit"
+                        class="hidden mt-4 text-center text-xl text-gray-700 p-4 border border-gray-300 rounded-md shadow-lg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Small Screen Layout (Only Left Section and Button) -->
+            <div class="lg:hidden w-full mt-8">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Dress Code Recommendation</h2>
+
+                    <!-- Input Fields -->
+                    <div class="space-y-4">
+                        <label for="weather" class="block text-gray-700">Weather:</label>
+                        <select id="weather" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="hot">Hot</option>
+                            <option value="cold">Cold</option>
+                            <option value="rainy">Rainy</option>
+                        </select>
+
+                        <label for="event-type" class="block text-gray-700">Event Type:</label>
+                        <select id="event-type" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="formal">Formal</option>
+                            <option value="casual">Casual</option>
+                            <option value="party">Party</option>
+                        </select>
+
+                        <label for="style" class="block text-gray-700">Style:</label>
+                        <select id="style" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="classic">Classic</option>
+                            <option value="trendy">Trendy</option>
+                            <option value="sporty">Sporty</option>
+                        </select>
+
+                        <label for="time-of-day" class="block text-gray-700">Time of Day:</label>
+                        <select id="time-of-day" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="day">Day</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+
+                    <!-- Get Recommendation Button -->
+                    <button id="get-recommendation-mobile"
+                        class="w-full mt-4 p-2 bg-purple-500 text-white rounded-md">Get Recommendation</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- End of Card Container -->
+
+    </div>
+
+    <script>
+        const getRecommendationButton = document.getElementById("get-recommendation");
+        const getRecommendationButtonMobile = document.getElementById("get-recommendation-mobile");
+        const skeleton = document.getElementById("skeleton");
+        const outfit = document.getElementById("outfit");
+
+        function getOutfitRecommendation() {
+            // Show skeleton animation
+            skeleton.classList.remove("hidden");
+            skeleton.classList.add("h-16");  // Increased height for skeleton
+
+            outfit.classList.add("hidden");
+
+            // Simulate loading time
+            setTimeout(() => {
+                skeleton.classList.add("hidden");
+
+                // Simulate a recommendation (you can replace this logic with real data)
+                outfit.innerHTML = "Recommended Outfit: Stylish Casual Look - T-shirt, Jeans, Sneakers";
+                outfit.classList.remove("hidden");
+                outfit.classList.add("mt-4", "p-4", "border", "border-gray-300", "rounded-md", "shadow-lg");
+            }, 2000);
+        }
+
+        // Handle button click for both large and small screens
+        getRecommendationButton.addEventListener("click", getOutfitRecommendation);
+        getRecommendationButtonMobile.addEventListener("click", getOutfitRecommendation);
+    </script>
+</body>
+
+</html>

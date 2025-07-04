@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .active {
+            background-color: #6B46C1;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-900 p-4">
+            <h2 class="text-purple-500 text-xl font-bold mb-4">Categories</h2>
+            <ul id="categoryList" class="space-y-2"></ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <h1 class="text-2xl font-bold mb-4">Products</h1>
+            <div id="subcategoryButtons" class="flex space-x-2 mb-4"></div>
+            <div id="productGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-gray-900 p-6 rounded-lg w-96">
+            <h2 class="text-xl font-bold text-white">Inquiry</h2>
+            <img id="modalProductImage" class="w-full h-32 object-cover mb-4 rounded" alt="Product Image">
+            <p id="modalProductName" class="text-gray-300 my-2"></p>
+            <textarea id="modalMessage" class="w-full p-2 bg-gray-800 rounded text-white"
+                placeholder="Enter your message"></textarea>
+            <div class="flex justify-between mt-4">
+                <button onclick="sendViaWhatsApp()" class="bg-green-500 px-4 py-2 rounded">Send WhatsApp</button>
+                <button onclick="sendViaEmail()" class="bg-blue-500 px-4 py-2 rounded">Send Email</button>
+            </div>
+            <button class="w-full mt-4 bg-gray-700 px-4 py-2 rounded" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const categories = {
+            "Electronics": { quantity: 15, subcategories: ["Phones", "Laptops", "Accessories"], image: "electronics.jpg" },
+            "Clothing": { quantity: 20, subcategories: ["Men", "Women", "Kids"], image: "clothing.jpg" },
+            "Home Appliances": { quantity: 10, subcategories: ["Kitchen", "Living Room", "Bathroom"], image: "home.jpg" }
+        };
+        const products = [
+            { id: 1, name: "iPhone 13", category: "Electronics", subcategory: "Phones", price: "$999", image: "iphone.jpg", link: "https://example.com/iphone13" },
+            { id: 2, name: "MacBook Air", category: "Electronics", subcategory: "Laptops", price: "$1299", image: "macbook.jpg", link: "https://example.com/macbookair" },
+            { id: 3, name: "Men's Jacket", category: "Clothing", subcategory: "Men", price: "$79", image: "jacket.jpg", link: "https://example.com/jacket" }
+        ];
+
+        const contact = {
+            whatsapp: "+250738019704",
+            instagram: "#",
+            email: "#"
+        };
+
+        function renderCategories() {
+            const categoryList = document.getElementById("categoryList");
+            categoryList.innerHTML = "";
+            for (const category in categories) {
+                const li = document.createElement("li");
+                li.className = "flex items-center p-2 bg-gray-800 hover:bg-purple-500 cursor-pointer rounded";
+                li.innerHTML = `<img src="${categories[category].image}" class="w-12 h-12 rounded mr-2"> <div><p>${category}</p><p class='text-sm text-gray-400'>${categories[category].quantity} items</p></div>`;
+                li.onclick = () => loadProducts(category);
+                categoryList.appendChild(li);
+            }
+        }
+
+        function renderProduct(product) {
+            const productGrid = document.getElementById("productGrid");
+            const div = document.createElement("div");
+            div.className = "bg-gray-800 p-4 rounded-lg";
+            div.innerHTML = `
+                <img src="${product.image}" class="w-full h-32 object-cover mb-2 rounded">
+                <h3 class="text-lg font-bold">${product.name}</h3>
+                <p class="text-gray-400">${product.price}</p>
+                <button class="bg-purple-500 w-full mt-2 p-2 rounded" onclick="openModal('${product.name}', '${product.image}', '${product.link}')">Buy/Inquire</button>
+            `;
+            productGrid.appendChild(div);
+        }
+
+        function loadProducts(category = null, subcategory = null) {
+            document.querySelectorAll(".active").forEach(el => el.classList.remove("active"));
+            if (subcategory) document.querySelector(`[data-subcategory='${subcategory}']`).classList.add("active");
+
+            const productGrid = document.getElementById("productGrid");
+            productGrid.innerHTML = "<div class='skeleton w-full h-32 rounded-md'></div>".repeat(6);
+            setTimeout(() => {
+                productGrid.innerHTML = "";
+                let filteredProducts = category ? products.filter(p => p.category === category && (subcategory ? p.subcategory === subcategory : true)) : products;
+                if (!subcategory && category) renderSubcategories(category);
+                if (filteredProducts.length === 0) productGrid.innerHTML = "<p>No products available.</p>";
+                filteredProducts.forEach(product => renderProduct(product));
+            }, 1000);
+        }
+
+        function renderSubcategories(category) {
+            const subcategoryButtons = document.getElementById("subcategoryButtons");
+            subcategoryButtons.innerHTML = "";
+            categories[category].subcategories.forEach(sub => {
+                const btn = document.createElement("button");
+                btn.className = "bg-gray-700 px-4 py-2 rounded-lg";
+                btn.textContent = sub;
+                btn.dataset.subcategory = sub;
+                btn.onclick = () => loadProducts(category, sub);
+                subcategoryButtons.appendChild(btn);
+            });
+        }
+
+        function openModal(productName, productImage, productLink) {
+            document.getElementById("modalProductName").textContent = productName;
+            document.getElementById("modalProductImage").src = productImage;
+            document.getElementById("modal").classList.remove("hidden");
+            window.currentProductLink = productLink;
+        }
+
+        function closeModal() {
+            document.getElementById("modal").classList.add("hidden");
+        }
+
+        function sendViaWhatsApp() {
+            const message = document.getElementById("modalMessage").value;
+            const fullMessage = `Product: ${document.getElementById("modalProductName").textContent}\nMessage: ${message}\nLink: ${window.currentProductLink}`;
+            const url = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(fullMessage)}`;
+            window.open(url, "_blank");
+            closeModal();
+        }
+
+        function sendViaInstagram() {
+            const message = document.getElementById("modalMessage").value;
+            const fullMessage = `Product: ${document.getElementById("modalProductName").textContent}\nMessage: ${message}\nLink: ${window.currentProductLink}`;
+            const url = `https://instagram.com/${contact.instagram}?text=${encodeURIComponent(fullMessage)}`;
+            window.open(url, "_blank");
+            closeModal();
+        }
+
+        function sendViaEmail() {
+            const message = document.getElementById("modalMessage").value;
+            const fullMessage = `Product: ${document.getElementById("modalProductName").textContent}\nMessage: ${message}\nLink: ${window.currentProductLink}`;
+            const url = `mailto:${contact.email}?subject=Product Inquiry&body=${encodeURIComponent(fullMessage)}`;
+            window.open(url, "_blank");
+            closeModal();
+        }
+
+        renderCategories();
+        loadProducts();
+    </script>
+</body>
+
+</html>

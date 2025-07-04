@@ -1,40 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Shop premium men's fashion – stylish suits, shirts, shoes, accessories, and grooming.">
+    <meta name="keywords" content="men fashion, suits, stylish clothes, accessories, men's grooming, Rwanda fashion">
+    <meta name="author" content="Exquisitekonnor">
+    <title>ExquisiteKonnor | Men's Fashion Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Exquisite-Konnor</title>
+    <style>
+        .map-iframe {
+            border: 0;
+            width: 100%;
+            max-width: 600px;
+            height: 450px;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
-<body>
-    <header class="bg-black text-white">
-        <div class="flex justify-between px-20 py-2 border-b border-purple-500">
-            <p>Contact: (231) 886 581 168</p>
-            <p>Welcome to Exquisite Konnor Boutique</p>
+
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-2xl font-bold transform scale-100 transition-transform duration-500 cursor-default">
+                EXQUISITEKONNOR
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6 font-medium text-gray-700">
+                <a href="#" onclick="scrollToSection('top')" class="hover:text-black">Home</a>
+                <a href="#products" class="hover:text-black">Products</a>
+                <a href="#suggest" class="hover:text-black">Suggest</a>
+                <a href="#contact" class="hover:text-black">Contact</a>
+            </div>
+
+            <!-- Mobile Toggle Button -->
+            <button id="navToggle" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
         </div>
 
-        <div class="flex justify-between py-5 px-10">
-            <div>
-                <img src="./assets/Exquisite-Konnor-Logo.png" alt="Logo" class="w-[300px] h-[50px]">
-            </div>
-            <div class="flex items-center">
-                <nav class="flex gap-20">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Products</a>
-                    <a href="#">Contact</a>
-                </nav>
-            </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-white text-gray-700">
+            <a href="#" onclick="scrollToSection('top'); toggleMenu()" class="block hover:text-black">Home</a>
+            <a href="#products" onclick="toggleMenu()" class="block hover:text-black">Products</a>
+            <a href="#suggest" onclick="toggleMenu()" class="block hover:text-black">Suggest</a>
+            <a href="#contact" onclick="toggleMenu()" class="block hover:text-black">Contact</a>
         </div>
-    </header>
+    </nav>
 
-    <section id="home" class="h-[100vh]">
-        <div class="container">
-            <h3 class="text-white text-lg font-bold italic">SUMMER COLLECTION</h3>
+
+    <!-- Hero -->
+    <section class="relative h-screen text-white flex items-center justify-center">
+        <img src="assets/Home-bg.jpg" alt="Fashion Hero" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="z-10 text-center">
+            <h1 class="text-5xl font-bold mb-4">Discover Your Signature Style</h1>
+            <p class="text-xl mb-6">Premium menswear curated for elegance and comfort.</p>
+            <button type="button" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })"
+                class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Shop
+                Now</button>
         </div>
     </section>
-</body>
-</html>
 
+    <!-- Products Preview -->
+    <section id="products" class="py-16 px-6 container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-10">Featured Products</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="https://placehold.co/400x500?text=Classic+Shirt" class="w-full h-64 object-cover"
+                    alt="Classic Cotton Shirt" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">Classic Cotton Shirt</h3>
+                    <p class="text-gray-600">$89.99</p>
+                    <button
+                        onclick="openModal('Classic Cotton Shirt', 'https://placehold.co/400x500?text=Classic+Shirt')"
+                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Inquire</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="https://placehold.co/400x500?text=Slim+Fit+Trousers" class="w-full h-64 object-cover"
+                    alt="Slim Fit Trousers" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">Slim Fit Trousers</h3>
+                    <p class="text-gray-600">$129.99</p>
+                    <button
+                        onclick="openModal('Slim Fit Trousers', 'https://placehold.co/400x500?text=Slim+Fit+Trousers')"
+                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Inquire</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="https://placehold.co/400x500?text=Wool+Suit+Jacket" class="w-full h-64 object-cover"
+                    alt="Wool Suit Jacket" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">Wool Suit Jacket</h3>
+                    <p class="text-gray-600">$299.99</p>
+                    <button
+                        onclick="openModal('Wool Suit Jacket', 'https://placehold.co/400x500?text=Wool+Suit+Jacket')"
+                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Inquire</button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <a href="productpage.html"
+                class="inline-block bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700">See More</a>
+        </div>
+    </section>
+
+    <!-- Outfit Recommender -->
+    <section class="bg-white py-16 px-4">
+        <iframe src="suggest.html" class="w-full h-[800px] border rounded-lg shadow-lg"
+            title="Outfit Recommender"></iframe>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-gray-100 py-16 px-6" id="contact">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+            <form action="https://formspree.io/f/mwkgyqqo" method="POST" class="space-y-4 text-left mb-8">
+                <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded"
+                    required>
+                <input type="email" name="email" placeholder="Your Email"
+                    class="w-full p-3 border border-gray-300 rounded" required>
+                <textarea name="message" placeholder="Your Message" class="w-full p-3 border border-gray-300 rounded"
+                    required></textarea>
+                <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700">Send
+                    Message</button>
+            </form>
+            <iframe class="map-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63452.123711952496!2d-10.810878082560892!3d6.29553560144691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf09f803d4a9fcc1%3A0x5b6c4dd7069694af!2sMonrovia%2C%20Liberia!5e0!3m2!1sen!2srw!4v1751631012054!5m2!1sen!2srw"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Location Map"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center py-8">
+        &copy; 2025 ExquisiteKonnor. All Rights Reserved.
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-6 rounded-lg w-96 relative">
+            <button onclick="closeModal()" class="absolute top-2 right-2 text-black text-lg">&times;</button>
+            <img id="modalProductImage" class="w-full h-48 object-cover mb-4 rounded" alt="Product Image">
+            <h2 id="modalProductName" class="text-xl font-semibold mb-2"></h2>
+            <textarea id="modalMessage" class="w-full p-2 border border-gray-300 rounded mb-4 h-24 resize-none"
+                placeholder="Enter your message..."></textarea>
+            <div class="flex justify-between">
+                <button onclick="sendViaWhatsApp()"
+                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">WhatsApp</button>
+                <button onclick="sendViaEmail()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Email</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentProductName = "";
+        let currentProductImage = "";
+
+        const contact = {
+            whatsapp: "250738019704",
+            email: "your@email.com"
+        };
+
+        function openModal(name, image) {
+            currentProductName = name;
+            currentProductImage = image;
+            document.getElementById("modalProductName").innerText = name;
+            document.getElementById("modalProductImage").src = image;
+            document.getElementById("modalMessage").value = "";
+            document.getElementById("modal").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("modal").classList.add("hidden");
+        }
+
+        function sendViaWhatsApp() {
+            const message = document.getElementById("modalMessage").value;
+            const url = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent("I'm interested in: " + currentProductName + "\n\n" + message)}`;
+            window.open(url, "_blank");
+        }
+
+        function sendViaEmail() {
+            const message = document.getElementById("modalMessage").value;
+            const subject = encodeURIComponent("Product Inquiry: " + currentProductName);
+            const body = encodeURIComponent(message);
+            window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+        }
+
+        // Scroll to top for "Home" link
+        function scrollToSection(id) {
+            if (id === "top") window.scrollTo({ top: 0, behavior: 'smooth' });
+            else document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("hidden");
+        }
+
+        // Mobile menu button
+        document.getElementById("navToggle").addEventListener("click", toggleMenu);
+
+    </script>
+
+</body>
+
+</html>
