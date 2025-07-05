@@ -1,15 +1,23 @@
-<!-- Save this as index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Shop premium men's fashion – stylish clothing, shoes, accessories & grooming.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Shop premium men's fashion – stylish clothing, shoes, accessories & grooming." />
     <meta name="keywords"
-        content="men fashion, suits, stylish clothes, accessories, grooming, Rwanda, urban wear, modern menswear">
-    <meta name="author" content="ExquisiteKonnor">
+        content="men fashion, suits, stylish clothes, accessories, grooming, Rwanda, urban wear, modern menswear" />
+    <meta name="author" content="ExquisiteKonnor" />
     <title>ExquisiteKonnor | Men's Fashion Boutique</title>
+
+    <!-- Open Graph for social media previews -->
+    <meta property="og:title" content="ExquisiteKonnor | Men's Fashion Boutique" />
+    <meta property="og:description"
+        content="Shop premium men's fashion – stylish clothing, shoes, accessories & grooming." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/Home-bg.jpg" />
+    <meta property="og:url" content="https://yourdomain.com/" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .map-iframe {
@@ -30,190 +38,204 @@
 <body class="bg-black text-white font-sans">
 
     <!-- Navbar -->
-    <nav class="bg-darkgray sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-purple-500 cursor-default">EXQUISITEKONNOR</div>
-            <div class="hidden md:flex space-x-6 font-medium text-white">
-                <a href="#" onclick="scrollToSection('top')" class="hover:text-purple-400">Home</a>
-                <a href="#products" class="hover:text-purple-400">Products</a>
-                <a href="#suggest" class="hover:text-purple-400">Suggest</a>
-                <a href="#contact" class="hover:text-purple-400">Contact</a>
+    <header>
+        <nav class="bg-darkgray sticky top-0 z-50 shadow-md">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold text-purple-500 cursor-default">EXQUISITEKONNOR</div>
+                <div class="hidden md:flex space-x-6 font-medium text-white">
+                    <a href="#" onclick="scrollToSection('top')" class="hover:text-purple-400">Home</a>
+                    <a href="#products" class="hover:text-purple-400">Products</a>
+                    <a href="#suggest" class="hover:text-purple-400">Suggest</a>
+                    <a href="#contact" class="hover:text-purple-400">Contact</a>
+                </div>
+                <button id="navToggle" type="button" class="md:hidden text-white" title="Open navigation menu"
+                    aria-controls="mobileMenu" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="sr-only">Open navigation menu</span>
+                </button>
             </div>
-            <button id="navToggle" type="button" class="md:hidden text-white" title="Open navigation menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-                <span class="sr-only">Open navigation menu</span>
-            </button>
-        </div>
-        <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-darkgray text-white">
-            <a href="#" onclick="scrollToSection('top'); toggleMenu()" class="block hover:text-purple-400">Home</a>
-            <a href="#products" onclick="toggleMenu()" class="block hover:text-purple-400">Products</a>
-            <a href="#suggest" onclick="toggleMenu()" class="block hover:text-purple-400">Suggest</a>
-            <a href="#contact" onclick="toggleMenu()" class="block hover:text-purple-400">Contact</a>
-        </div>
-    </nav>
+            <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-darkgray text-white" role="menu"
+                aria-label="Mobile navigation">
+                <a href="#" onclick="scrollToSection('top'); toggleMenu()" class="block hover:text-purple-400"
+                    role="menuitem">Home</a>
+                <a href="#products" onclick="toggleMenu()" class="block hover:text-purple-400"
+                    role="menuitem">Products</a>
+                <a href="#suggest" onclick="toggleMenu()" class="block hover:text-purple-400"
+                    role="menuitem">Suggest</a>
+                <a href="#contact" onclick="toggleMenu()" class="block hover:text-purple-400"
+                    role="menuitem">Contact</a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center">
-        <img src="assets/Home-bg.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30" alt="Hero" />
-        <div class="z-10 text-center">
-            <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Discover Your Signature Style</h1>
-            <button type="button" onclick="scrollToSection('products')"
-                class="bg-purple-500 text-white px-6 py-2 rounded hover:bg-purple-600">Shop Now</button>
-        </div>
-    </section>
+    <main>
+        <section class="relative h-screen flex items-center justify-center">
+            <img src="assets/Home-bg.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30" alt="Hero" />
+            <div class="z-10 text-center">
+                <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Discover Your Signature Style</h1>
+                <button type="button" onclick="scrollToSection('products')"
+                    class="bg-purple-500 text-white px-6 py-2 rounded hover:bg-purple-600">Shop Now</button>
+            </div>
+        </section>
 
-    <!-- Products Preview -->
-    <section id="products" class="py-16 px-4 max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-10 text-purple-500">Featured Products</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Example Card 1 -->
-            <div
-                class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
-                <img src="assets/shirt.jpg" alt="Classic Shirt" class="w-full h-64 object-cover" />
-                <div class="p-4">
-                    <h3 class="text-white font-semibold text-xl">Classic Cotton Shirt</h3>
-                    <button type="button" onclick="openModal('Classic Cotton Shirt', 'assets/shirt.jpg')"
-                        class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
+        <!-- Products Preview -->
+        <section id="products" class="py-16 px-4 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10 text-purple-500">Featured Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Example Card 1 -->
+                <article
+                    class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
+                    <img src="assets/shirt.jpg" alt="Classic Cotton Shirt" class="w-full h-64 object-cover" />
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-xl">Classic Cotton Shirt</h3>
+                        <button type="button" onclick="openModal('Classic Cotton Shirt', 'assets/shirt.jpg')"
+                            class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
+                    </div>
+                </article>
+
+                <!-- Example Card 2 -->
+                <article
+                    class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
+                    <img src="assets/sneakers.jpg" alt="Urban Sneakers" class="w-full h-64 object-cover" />
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-xl">Urban Sneakers</h3>
+                        <button type="button" onclick="openModal('Urban Sneakers', 'assets/sneakers.jpg')"
+                            class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
+                    </div>
+                </article>
+
+                <!-- Example Card 3 -->
+                <article
+                    class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
+                    <img src="assets/perfume.jpg" alt="Luxury Cologne" class="w-full h-64 object-cover" />
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-xl">Luxury Cologne</h3>
+                        <button type="button" onclick="openModal('Luxury Cologne', 'assets/perfume.jpg')"
+                            class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
+                    </div>
+                </article>
+            </div>
+            <div class="text-center mt-10">
+                <a href="productpage.html"
+                    class="inline-block bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-600">See
+                    More</a>
+            </div>
+        </section>
+
+        <!-- Outfit Recommender -->
+        <section id="suggest" class="bg-black py-16 px-4">
+            <div class="max-w-6xl mx-auto bg-darkgray p-6 rounded-lg shadow-lg flex flex-col lg:flex-row gap-6">
+                <!-- Left Section (Inputs) -->
+                <div class="lg:w-1/3 w-full bg-black p-4 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold text-purple-500 mb-4">Dress Code Recommendation</h2>
+                    <div class="space-y-4">
+                        <label for="weather" class="block text-white">Weather:</label>
+                        <select id="weather" class="w-full p-2 bg-gray-800 text-white rounded" aria-required="true">
+                            <option value="" disabled selected>Select weather</option>
+                            <option value="hot">Hot</option>
+                            <option value="cold">Cold</option>
+                            <option value="rainy">Rainy</option>
+                        </select>
+
+                        <label for="event-type" class="block text-white">Event Type:</label>
+                        <select id="event-type" class="w-full p-2 bg-gray-800 text-white rounded" aria-required="true">
+                            <option value="" disabled selected>Select event type</option>
+                            <option value="formal">Formal</option>
+                            <option value="casual">Casual</option>
+                            <option value="party">Party</option>
+                        </select>
+
+                        <label for="style" class="block text-white">Style:</label>
+                        <select id="style" class="w-full p-2 bg-gray-800 text-white rounded" aria-required="true">
+                            <option value="" disabled selected>Select style</option>
+                            <option value="classic">Classic</option>
+                            <option value="trendy">Trendy</option>
+                            <option value="sporty">Sporty</option>
+                        </select>
+
+                        <label for="time-of-day" class="block text-white">Time of Day:</label>
+                        <select id="time-of-day" class="w-full p-2 bg-gray-800 text-white rounded" aria-required="true">
+                            <option value="" disabled selected>Select time</option>
+                            <option value="day">Day</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Center Section -->
+                <div class="lg:w-1/3 w-full flex flex-col items-center justify-center text-center px-4">
+                    <h2 class="text-2xl font-semibold mb-4 text-purple-500">Find Your Perfect Outfit</h2>
+                    <p class="text-gray-300 mb-4">Answer the questions and we’ll recommend a great look for you!</p>
+                    <div class="flex items-center gap-2 text-purple-400" aria-hidden="true">
+                        <span>←</span>
+                        <span class="font-medium">Style Selector</span>
+                        <span>→</span>
+                    </div>
+                </div>
+
+                <!-- Right Section -->
+                <div class="lg:w-1/3 w-full flex flex-col justify-center items-center text-center px-4">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Ready?</h3>
+                    <button id="get-recommendation"
+                        class="w-full p-3 bg-purple-500 hover:bg-purple-600 text-white rounded-md font-medium transition"
+                        aria-label="Get outfit recommendation">
+                        Get Recommendation
+                    </button>
+
+                    <!-- Loading Skeleton -->
+                    <div id="skeleton" class="hidden mt-4 w-full h-12 bg-gray-700 rounded-md animate-pulse"
+                        aria-hidden="true"></div>
+
+                    <!-- Output -->
+                    <div id="outfit"
+                        class="hidden mt-4 text-lg text-white p-4 border border-purple-500 rounded-md shadow-md w-full bg-black"
+                        role="region" aria-live="polite"></div>
                 </div>
             </div>
+        </section>
 
-            <!-- Example Card 2 -->
-            <div
-                class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
-                <img src="assets/sneakers.jpg" alt="Sneakers" class="w-full h-64 object-cover" />
-                <div class="p-4">
-                    <h3 class="text-white font-semibold text-xl">Urban Sneakers</h3>
-                    <button type="button" onclick="openModal('Urban Sneakers', 'assets/sneakers.jpg')"
-                        class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
+        <!-- Contact -->
+        <section id="contact" class="bg-darkgray py-16 px-4 text-white">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+                <!-- Contact Form -->
+                <form action="https://formspree.io/f/mwkgyqqo" method="POST"
+                    class="flex-1 space-y-4 text-left border border-purple-500 rounded-lg p-6 bg-black">
+                    <h2 class="text-3xl font-bold mb-6 text-purple-500 text-center md:text-left">Contact Us</h2>
+                    <input type="text" name="name" placeholder="Your Name"
+                        class="w-full p-3 rounded bg-black text-white border border-purple-500" required />
+                    <input type="email" name="email" placeholder="Your Email"
+                        class="w-full p-3 rounded bg-black text-white border border-purple-500" required />
+                    <textarea name="message" placeholder="Your Message"
+                        class="w-full p-3 rounded bg-black text-white border border-purple-500" required></textarea>
+                    <button type="submit"
+                        class="w-full bg-purple-500 text-white py-3 px-6 rounded hover:bg-purple-600">Send</button>
+                </form>
+
+                <!-- Map -->
+                <div class="flex-1 border border-purple-500 rounded-lg overflow-hidden">
+                    <iframe class="map-iframe"
+                        data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63452.123711952496!2d-10.810878082560892!3d6.29553560144691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf09f803d4a9fcc1%3A0x5b6c4dd7069694af!2sMonrovia%2C%20Liberia!5e0!3m2!1sen!2srw!4v1751631012054!5m2!1sen!2srw"
+                        allowfullscreen title="Location Map" aria-label="Location Map"></iframe>
                 </div>
             </div>
-
-            <!-- Example Card 3 -->
-            <div
-                class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
-                <img src="assets/perfume.jpg" alt="Cologne" class="w-full h-64 object-cover" />
-                <div class="p-4">
-                    <h3 class="text-white font-semibold text-xl">Luxury Cologne</h3>
-                    <button type="button" onclick="openModal('Luxury Cologne', 'assets/perfume.jpg')"
-                        class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-10">
-            <a href="productpage.html"
-                class="inline-block bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-600">See More</a>
-        </div>
-    </section>
-
-    <!-- Outfit Recommender -->
-    <section id="suggest" class="bg-black py-16 px-4">
-        <div class="max-w-6xl mx-auto bg-darkgray p-6 rounded-lg shadow-lg flex flex-col lg:flex-row gap-6">
-            <!-- Left Section (Inputs) -->
-            <div class="lg:w-1/3 w-full bg-black p-4 rounded-lg shadow">
-                <h2 class="text-xl font-semibold text-purple-500 mb-4">Dress Code Recommendation</h2>
-                <div class="space-y-4">
-                    <label for="weather" class="block text-white">Weather:</label>
-                    <select id="weather" class="w-full p-2 bg-gray-800 text-white rounded">
-                        <option value="" disabled selected>Select weather</option>
-                        <option value="hot">Hot</option>
-                        <option value="cold">Cold</option>
-                        <option value="rainy">Rainy</option>
-                    </select>
-
-                    <label for="event-type" class="block text-white">Event Type:</label>
-                    <select id="event-type" class="w-full p-2 bg-gray-800 text-white rounded">
-                        <option value="" disabled selected>Select event type</option>
-                        <option value="formal">Formal</option>
-                        <option value="casual">Casual</option>
-                        <option value="party">Party</option>
-                    </select>
-
-                    <label for="style" class="block text-white">Style:</label>
-                    <select id="style" class="w-full p-2 bg-gray-800 text-white rounded">
-                        <option value="" disabled selected>Select style</option>
-                        <option value="classic">Classic</option>
-                        <option value="trendy">Trendy</option>
-                        <option value="sporty">Sporty</option>
-                    </select>
-
-                    <label for="time-of-day" class="block text-white">Time of Day:</label>
-                    <select id="time-of-day" class="w-full p-2 bg-gray-800 text-white rounded">
-                        <option value="" disabled selected>Select time</option>
-                        <option value="day">Day</option>
-                        <option value="night">Night</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Center Section -->
-            <div class="lg:w-1/3 w-full flex flex-col items-center justify-center text-center px-4">
-                <h2 class="text-2xl font-semibold mb-4 text-purple-500">Find Your Perfect Outfit</h2>
-                <p class="text-gray-300 mb-4">Answer the questions and we’ll recommend a great look for you!</p>
-                <div class="flex items-center gap-2 text-purple-400">
-                    <span>←</span>
-                    <span class="font-medium">Style Selector</span>
-                    <span>→</span>
-                </div>
-            </div>
-
-            <!-- Right Section -->
-            <div class="lg:w-1/3 w-full flex flex-col justify-center items-center text-center px-4">
-                <h3 class="text-xl font-semibold mb-4 text-white">Ready?</h3>
-                <button id="get-recommendation"
-                    class="w-full p-3 bg-purple-500 hover:bg-purple-600 text-white rounded-md font-medium transition">
-                    Get Recommendation
-                </button>
-
-                <!-- Loading Skeleton -->
-                <div id="skeleton" class="hidden mt-4 w-full h-12 bg-gray-700 rounded-md animate-pulse"></div>
-
-                <!-- Output -->
-                <div id="outfit"
-                    class="hidden mt-4 text-lg text-white p-4 border border-purple-500 rounded-md shadow-md w-full bg-black">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="bg-darkgray py-16 px-4 text-white">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
-            <!-- Contact Form -->
-            <form action="https://formspree.io/f/mwkgyqqo" method="POST"
-                class="flex-1 space-y-4 text-left border border-purple-500 rounded-lg p-6 bg-black">
-                <h2 class="text-3xl font-bold mb-6 text-purple-500 text-center md:text-left">Contact Us</h2>
-                <input type="text" name="name" placeholder="Your Name"
-                    class="w-full p-3 rounded bg-black text-white border border-purple-500" required />
-                <input type="email" name="email" placeholder="Your Email"
-                    class="w-full p-3 rounded bg-black text-white border border-purple-500" required />
-                <textarea name="message" placeholder="Your Message"
-                    class="w-full p-3 rounded bg-black text-white border border-purple-500" required></textarea>
-                <button type="submit"
-                    class="w-full bg-purple-500 text-white py-3 px-6 rounded hover:bg-purple-600">Send</button>
-            </form>
-
-            <!-- Map -->
-            <div class="flex-1 border border-purple-500 rounded-lg overflow-hidden">
-                <iframe class="map-iframe"
-                    data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63452.123711952496!2d-10.810878082560892!3d6.29553560144691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf09f803d4a9fcc1%3A0x5b6c4dd7069694af!2sMonrovia%2C%20Liberia!5e0!3m2!1sen!2srw!4v1751631012054!5m2!1sen!2srw"
-                    allowfullscreen title="Location Map"></iframe>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-black text-center text-purple-500 py-6">
+    <footer class="bg-black text-center text-purple-500 py-6" role="contentinfo">
         &copy; 2025 ExquisiteKonnor. All rights reserved.
     </footer>
 
     <!-- Inquiry Modal -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4"
+        role="dialog" aria-modal="true" aria-labelledby="modalProductName">
         <div
             class="bg-darkgray rounded-lg max-w-md w-full p-6 relative border border-purple-500 shadow-lg transition hover:shadow-xl hover:border-purple-400">
-            <button type="button" onclick="closeModal()"
+            <button type="button" onclick="closeModal()" aria-label="Close modal"
                 class="absolute top-2 right-2 text-white text-3xl leading-none hover:text-purple-500">&times;</button>
             <img id="modalProductImage" class="w-full h-48 object-cover mb-4 rounded" alt="Product Image" />
             <h2 id="modalProductName" class="text-xl font-semibold mb-2 text-white"></h2>
@@ -270,6 +292,11 @@
         function toggleMenu() {
             const menu = document.getElementById("mobileMenu");
             menu.classList.toggle("hidden");
+
+            // Update aria-expanded attribute
+            const navToggle = document.getElementById("navToggle");
+            const expanded = navToggle.getAttribute("aria-expanded") === "true";
+            navToggle.setAttribute("aria-expanded", !expanded);
         }
 
         document.getElementById("navToggle").addEventListener("click", toggleMenu);
@@ -277,27 +304,29 @@
         // Lazy load the map iframe for browsers that do not support 'loading' attribute
         document.addEventListener("DOMContentLoaded", function () {
             var iframe = document.querySelector('.map-iframe');
-            if (iframe && !('loading' in HTMLIFrameElement.prototype)) {
-                function loadMap() {
-                    if (iframe.src) return;
+            if (iframe) {
+                if ('loading' in HTMLIFrameElement.prototype) {
+                    // Browser supports lazy loading
+                    iframe.setAttribute('loading', 'lazy');
                     iframe.src = iframe.getAttribute('data-src');
-                    window.removeEventListener('scroll', onScroll);
-                }
-                function onScroll() {
-                    var rect = iframe.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        loadMap();
+                } else {
+                    // Fallback lazy load using scroll event
+                    function loadMap() {
+                        if (iframe.getAttribute('src')) return;
+                        iframe.src = iframe.getAttribute('data-src');
+                        window.removeEventListener('scroll', onScroll);
                     }
+                    function onScroll() {
+                        var rect = iframe.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            loadMap();
+                        }
+                    }
+                    window.addEventListener('scroll', onScroll);
+                    onScroll();
                 }
-                window.addEventListener('scroll', onScroll);
-                onScroll();
-            } else if (iframe) {
-                // Browsers with 'loading' support
-                iframe.setAttribute('loading', 'lazy');
-                iframe.src = iframe.getAttribute('data-src');
             }
         });
-
 
         const button = document.getElementById("get-recommendation");
         const skeleton = document.getElementById("skeleton");
@@ -307,41 +336,50 @@
             const weather = document.getElementById("weather").value;
             const eventType = document.getElementById("event-type").value;
             const style = document.getElementById("style").value;
-            const time = document.getElementById("time-of-day").value;
+            const timeOfDay = document.getElementById("time-of-day").value;
 
-            if (!weather || !eventType || !style || !time) {
-                outfit.classList.remove("hidden");
-                outfit.textContent = "⚠️ Please make sure all fields are selected.";
+            if (!weather || !eventType || !style || !timeOfDay) {
+                alert("Please answer all the questions.");
                 return;
             }
 
-            skeleton.classList.remove("hidden");
             outfit.classList.add("hidden");
+            skeleton.classList.remove("hidden");
 
             setTimeout(() => {
                 skeleton.classList.add("hidden");
+                outfit.classList.remove("hidden");
 
-                let recommendation = `For a ${style} ${eventType} during a ${weather} ${time}, we suggest: `;
+                // Simple outfit logic example:
+                let recommendation = "We recommend a ";
 
                 if (eventType === "formal") {
-                    recommendation += "a well-fitted suit";
-                    if (weather === "hot") recommendation += " in lightweight linen";
-                    else if (weather === "cold") recommendation += " with a wool overcoat";
-                    else recommendation += " with weather-appropriate accessories";
-                    recommendation += ", paired with classic dress shoes.";
+                    recommendation += "sharp suit with a tie";
                 } else if (eventType === "casual") {
-                    if (style === "classic") recommendation += "chinos and a button-up shirt";
-                    else if (style === "trendy") recommendation += "oversized tee and cargo pants";
-                    else recommendation += "a tracksuit or joggers with a sleek top";
-                    recommendation += weather === "cold" ? ", layered with a bomber or denim jacket." : ", completed with stylish sneakers.";
-                } else if (eventType === "party") {
-                    if (style === "trendy") recommendation += "a designer print shirt, fitted trousers, and loafers.";
-                    else if (style === "classic") recommendation += "a black dress shirt with matching slacks and leather shoes.";
-                    else recommendation += "a bomber jacket, slim-fit jeans, and bold sneakers.";
+                    recommendation += "comfortable jeans and a stylish shirt";
+                } else {
+                    recommendation += "trendy party wear with bold accessories";
+                }
+
+                if (weather === "hot") {
+                    recommendation += ", suitable for warm weather.";
+                } else if (weather === "cold") {
+                    recommendation += " with a cozy jacket to keep warm.";
+                } else {
+                    recommendation += " and a waterproof coat.";
+                }
+
+                if (style === "sporty") {
+                    recommendation += " Pair it with sneakers for a sporty vibe.";
+                } else if (style === "classic") {
+                    recommendation += " Classic leather shoes will complete the look.";
+                }
+
+                if (timeOfDay === "night") {
+                    recommendation += " Perfect for evening occasions.";
                 }
 
                 outfit.textContent = recommendation;
-                outfit.classList.remove("hidden");
             }, 2000);
         });
     </script>

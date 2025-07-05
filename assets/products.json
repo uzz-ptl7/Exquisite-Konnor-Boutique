@@ -1,0 +1,10 @@
+[
+  { "name": "Basic T-Shirt", "category": "Clothing", "subcategory": "T-Shirts", "price": "$19.99", "image": "assets/tshirt.jpg" },
+  { "name": "Leather Jacket", "category": "Clothing", "subcategory": "Jackets", "price": "$149.99", "image": "assets/jacket.jpg" },
+  { "name": "Slim Fit Jeans", "category": "Clothing", "subcategory": "Jeans", "price": "$69.99", "image": "assets/jeans.jpg" },
+  { "name": "Sneakers", "category": "Footwear", "subcategory": "Sneakers", "price": "$89.99", "image": "assets/sneakers.jpg" },
+  { "name": "Loafers", "category": "Footwear", "subcategory": "Loafers", "price": "$74.99", "image": "assets/loafers.jpg" },
+  { "name": "Luxury Cologne", "category": "Grooming & Fragrance", "subcategory": "Perfumes & Colognes", "price": "$59.99", "image": "assets/perfume.jpg" },
+  { "name": "Leather Belt", "category": "Accessories", "subcategory": "Belts", "price": "$29.99", "image": "assets/belt.jpg" },
+  { "name": "Sunglasses", "category": "Accessories", "subcategory": "Sunglasses", "price": "$39.99", "image": "assets/sunglasses.jpg" }
+]

@@ -1,0 +1,23 @@
+{
+  "Clothing": {
+    "subcategories": [
+      "T-Shirts", "Shirts", "Sweatshirts & Hoodies", "Sweaters", "Vests",
+      "Jeans", "Trousers", "Shorts", "Jackets", "Coats", "Blazers", "Suits"
+    ]
+  },
+  "Footwear": {
+    "subcategories": [
+      "Sneakers", "Boots", "Loafers", "Sandals & Slides"
+    ]
+  },
+  "Accessories": {
+    "subcategories": [
+      "Watches", "Sunglasses", "Hats & Caps", "Belts", "Ties", "Wallets"
+    ]
+  },
+  "Grooming & Fragrance": {
+    "subcategories": [
+      "Perfumes & Colognes", "Deodorants & Body Sprays"
+    ]
+  }
+}
