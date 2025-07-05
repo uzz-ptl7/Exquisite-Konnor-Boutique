@@ -1,177 +1,235 @@
+<!-- Save this as index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Shop premium men's fashion – stylish suits, shirts, shoes, accessories, and grooming.">
-    <meta name="keywords" content="men fashion, suits, stylish clothes, accessories, men's grooming, Rwanda fashion">
-    <meta name="author" content="Exquisitekonnor">
+    <meta name="description" content="Shop premium men's fashion – stylish clothing, shoes, accessories & grooming.">
+    <meta name="keywords"
+        content="men fashion, suits, stylish clothes, accessories, grooming, Rwanda, urban wear, modern menswear">
+    <meta name="author" content="ExquisiteKonnor">
     <title>ExquisiteKonnor | Men's Fashion Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .map-iframe {
             border: 0;
             width: 100%;
-            max-width: 600px;
-            height: 450px;
+            height: 100%;
             border-radius: 0.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            min-height: 350px;
+        }
+
+        /* Replace darkblue with dark gray */
+        .bg-darkgray {
+            background-color: #1e1e1e;
         }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+<body class="bg-black text-white font-sans">
 
     <!-- Navbar -->
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-darkgray sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <div class="text-2xl font-bold transform scale-100 transition-transform duration-500 cursor-default">
-                EXQUISITEKONNOR
+            <div class="text-2xl font-bold text-purple-500 cursor-default">EXQUISITEKONNOR</div>
+            <div class="hidden md:flex space-x-6 font-medium text-white">
+                <a href="#" onclick="scrollToSection('top')" class="hover:text-purple-400">Home</a>
+                <a href="#products" class="hover:text-purple-400">Products</a>
+                <a href="#suggest" class="hover:text-purple-400">Suggest</a>
+                <a href="#contact" class="hover:text-purple-400">Contact</a>
             </div>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6 font-medium text-gray-700">
-                <a href="#" onclick="scrollToSection('top')" class="hover:text-black">Home</a>
-                <a href="#products" class="hover:text-black">Products</a>
-                <a href="#suggest" class="hover:text-black">Suggest</a>
-                <a href="#contact" class="hover:text-black">Contact</a>
-            </div>
-
-            <!-- Mobile Toggle Button -->
-            <button id="navToggle" class="md:hidden focus:outline-none">
-                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
+            <button id="navToggle" type="button" class="md:hidden text-white" title="Open navigation menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
+                <span class="sr-only">Open navigation menu</span>
             </button>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-white text-gray-700">
-            <a href="#" onclick="scrollToSection('top'); toggleMenu()" class="block hover:text-black">Home</a>
-            <a href="#products" onclick="toggleMenu()" class="block hover:text-black">Products</a>
-            <a href="#suggest" onclick="toggleMenu()" class="block hover:text-black">Suggest</a>
-            <a href="#contact" onclick="toggleMenu()" class="block hover:text-black">Contact</a>
+        <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2 bg-darkgray text-white">
+            <a href="#" onclick="scrollToSection('top'); toggleMenu()" class="block hover:text-purple-400">Home</a>
+            <a href="#products" onclick="toggleMenu()" class="block hover:text-purple-400">Products</a>
+            <a href="#suggest" onclick="toggleMenu()" class="block hover:text-purple-400">Suggest</a>
+            <a href="#contact" onclick="toggleMenu()" class="block hover:text-purple-400">Contact</a>
         </div>
     </nav>
 
-
-    <!-- Hero -->
-    <section class="relative h-screen text-white flex items-center justify-center">
-        <img src="assets/Home-bg.jpg" alt="Fashion Hero" class="absolute inset-0 w-full h-full object-cover opacity-60">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center">
+        <img src="assets/Home-bg.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30" alt="Hero" />
         <div class="z-10 text-center">
-            <h1 class="text-5xl font-bold mb-4">Discover Your Signature Style</h1>
-            <p class="text-xl mb-6">Premium menswear curated for elegance and comfort.</p>
-            <button type="button" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })"
-                class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Shop
-                Now</button>
+            <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Discover Your Signature Style</h1>
+            <button type="button" onclick="scrollToSection('products')"
+                class="bg-purple-500 text-white px-6 py-2 rounded hover:bg-purple-600">Shop Now</button>
         </div>
     </section>
 
     <!-- Products Preview -->
-    <section id="products" class="py-16 px-6 container mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-10">Featured Products</h2>
+    <section id="products" class="py-16 px-4 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-10 text-purple-500">Featured Products</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://placehold.co/400x500?text=Classic+Shirt" class="w-full h-64 object-cover"
-                    alt="Classic Cotton Shirt" />
+            <!-- Example Card 1 -->
+            <div
+                class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
+                <img src="assets/shirt.jpg" alt="Classic Shirt" class="w-full h-64 object-cover" />
                 <div class="p-4">
-                    <h3 class="font-semibold text-lg">Classic Cotton Shirt</h3>
-                    <p class="text-gray-600">$89.99</p>
-                    <button
-                        onclick="openModal('Classic Cotton Shirt', 'https://placehold.co/400x500?text=Classic+Shirt')"
-                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Inquire</button>
+                    <h3 class="text-white font-semibold text-xl">Classic Cotton Shirt</h3>
+                    <button type="button" onclick="openModal('Classic Cotton Shirt', 'assets/shirt.jpg')"
+                        class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://placehold.co/400x500?text=Slim+Fit+Trousers" class="w-full h-64 object-cover"
-                    alt="Slim Fit Trousers" />
+
+            <!-- Example Card 2 -->
+            <div
+                class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
+                <img src="assets/sneakers.jpg" alt="Sneakers" class="w-full h-64 object-cover" />
                 <div class="p-4">
-                    <h3 class="font-semibold text-lg">Slim Fit Trousers</h3>
-                    <p class="text-gray-600">$129.99</p>
-                    <button
-                        onclick="openModal('Slim Fit Trousers', 'https://placehold.co/400x500?text=Slim+Fit+Trousers')"
-                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Inquire</button>
+                    <h3 class="text-white font-semibold text-xl">Urban Sneakers</h3>
+                    <button type="button" onclick="openModal('Urban Sneakers', 'assets/sneakers.jpg')"
+                        class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://placehold.co/400x500?text=Wool+Suit+Jacket" class="w-full h-64 object-cover"
-                    alt="Wool Suit Jacket" />
+
+            <!-- Example Card 3 -->
+            <div
+                class="bg-darkgray rounded-lg overflow-hidden shadow-md border border-purple-500 transition hover:shadow-lg hover:border-purple-400">
+                <img src="assets/perfume.jpg" alt="Cologne" class="w-full h-64 object-cover" />
                 <div class="p-4">
-                    <h3 class="font-semibold text-lg">Wool Suit Jacket</h3>
-                    <p class="text-gray-600">$299.99</p>
-                    <button
-                        onclick="openModal('Wool Suit Jacket', 'https://placehold.co/400x500?text=Wool+Suit+Jacket')"
-                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Inquire</button>
+                    <h3 class="text-white font-semibold text-xl">Luxury Cologne</h3>
+                    <button type="button" onclick="openModal('Luxury Cologne', 'assets/perfume.jpg')"
+                        class="mt-2 bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Inquire</button>
                 </div>
             </div>
         </div>
-        <div class="text-center mt-6">
+        <div class="text-center mt-10">
             <a href="productpage.html"
-                class="inline-block bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700">See More</a>
+                class="inline-block bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-600">See More</a>
         </div>
     </section>
 
     <!-- Outfit Recommender -->
-    <section class="bg-white py-16 px-4">
-        <iframe src="suggest.html" class="w-full h-[800px] border rounded-lg shadow-lg"
-            title="Outfit Recommender"></iframe>
+    <section id="suggest" class="bg-black py-16 px-4">
+        <div class="max-w-6xl mx-auto bg-darkgray p-6 rounded-lg shadow-lg flex flex-col lg:flex-row gap-6">
+            <!-- Left Section (Inputs) -->
+            <div class="lg:w-1/3 w-full bg-black p-4 rounded-lg shadow">
+                <h2 class="text-xl font-semibold text-purple-500 mb-4">Dress Code Recommendation</h2>
+                <div class="space-y-4">
+                    <label for="weather" class="block text-white">Weather:</label>
+                    <select id="weather" class="w-full p-2 bg-gray-800 text-white rounded">
+                        <option value="" disabled selected>Select weather</option>
+                        <option value="hot">Hot</option>
+                        <option value="cold">Cold</option>
+                        <option value="rainy">Rainy</option>
+                    </select>
+
+                    <label for="event-type" class="block text-white">Event Type:</label>
+                    <select id="event-type" class="w-full p-2 bg-gray-800 text-white rounded">
+                        <option value="" disabled selected>Select event type</option>
+                        <option value="formal">Formal</option>
+                        <option value="casual">Casual</option>
+                        <option value="party">Party</option>
+                    </select>
+
+                    <label for="style" class="block text-white">Style:</label>
+                    <select id="style" class="w-full p-2 bg-gray-800 text-white rounded">
+                        <option value="" disabled selected>Select style</option>
+                        <option value="classic">Classic</option>
+                        <option value="trendy">Trendy</option>
+                        <option value="sporty">Sporty</option>
+                    </select>
+
+                    <label for="time-of-day" class="block text-white">Time of Day:</label>
+                    <select id="time-of-day" class="w-full p-2 bg-gray-800 text-white rounded">
+                        <option value="" disabled selected>Select time</option>
+                        <option value="day">Day</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Center Section -->
+            <div class="lg:w-1/3 w-full flex flex-col items-center justify-center text-center px-4">
+                <h2 class="text-2xl font-semibold mb-4 text-purple-500">Find Your Perfect Outfit</h2>
+                <p class="text-gray-300 mb-4">Answer the questions and we’ll recommend a great look for you!</p>
+                <div class="flex items-center gap-2 text-purple-400">
+                    <span>←</span>
+                    <span class="font-medium">Style Selector</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="lg:w-1/3 w-full flex flex-col justify-center items-center text-center px-4">
+                <h3 class="text-xl font-semibold mb-4 text-white">Ready?</h3>
+                <button id="get-recommendation"
+                    class="w-full p-3 bg-purple-500 hover:bg-purple-600 text-white rounded-md font-medium transition">
+                    Get Recommendation
+                </button>
+
+                <!-- Loading Skeleton -->
+                <div id="skeleton" class="hidden mt-4 w-full h-12 bg-gray-700 rounded-md animate-pulse"></div>
+
+                <!-- Output -->
+                <div id="outfit"
+                    class="hidden mt-4 text-lg text-white p-4 border border-purple-500 rounded-md shadow-md w-full bg-black">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="bg-gray-100 py-16 px-6" id="contact">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-            <form action="https://formspree.io/f/mwkgyqqo" method="POST" class="space-y-4 text-left mb-8">
-                <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded"
-                    required>
+    <!-- Contact -->
+    <section id="contact" class="bg-darkgray py-16 px-4 text-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+            <!-- Contact Form -->
+            <form action="https://formspree.io/f/mwkgyqqo" method="POST"
+                class="flex-1 space-y-4 text-left border border-purple-500 rounded-lg p-6 bg-black">
+                <h2 class="text-3xl font-bold mb-6 text-purple-500 text-center md:text-left">Contact Us</h2>
+                <input type="text" name="name" placeholder="Your Name"
+                    class="w-full p-3 rounded bg-black text-white border border-purple-500" required />
                 <input type="email" name="email" placeholder="Your Email"
-                    class="w-full p-3 border border-gray-300 rounded" required>
-                <textarea name="message" placeholder="Your Message" class="w-full p-3 border border-gray-300 rounded"
-                    required></textarea>
-                <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700">Send
-                    Message</button>
+                    class="w-full p-3 rounded bg-black text-white border border-purple-500" required />
+                <textarea name="message" placeholder="Your Message"
+                    class="w-full p-3 rounded bg-black text-white border border-purple-500" required></textarea>
+                <button type="submit"
+                    class="w-full bg-purple-500 text-white py-3 px-6 rounded hover:bg-purple-600">Send</button>
             </form>
-            <iframe class="map-iframe"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63452.123711952496!2d-10.810878082560892!3d6.29553560144691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf09f803d4a9fcc1%3A0x5b6c4dd7069694af!2sMonrovia%2C%20Liberia!5e0!3m2!1sen!2srw!4v1751631012054!5m2!1sen!2srw"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                title="Location Map"></iframe>
+
+            <!-- Map -->
+            <div class="flex-1 border border-purple-500 rounded-lg overflow-hidden">
+                <iframe class="map-iframe"
+                    data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63452.123711952496!2d-10.810878082560892!3d6.29553560144691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf09f803d4a9fcc1%3A0x5b6c4dd7069694af!2sMonrovia%2C%20Liberia!5e0!3m2!1sen!2srw!4v1751631012054!5m2!1sen!2srw"
+                    allowfullscreen title="Location Map" loading="lazy"></iframe>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white text-center py-8">
-        &copy; 2025 ExquisiteKonnor. All Rights Reserved.
+    <footer class="bg-black text-center text-purple-500 py-6">
+        &copy; 2025 ExquisiteKonnor. All rights reserved.
     </footer>
 
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-        <div class="bg-white p-6 rounded-lg w-96 relative">
-            <button onclick="closeModal()" class="absolute top-2 right-2 text-black text-lg">&times;</button>
-            <img id="modalProductImage" class="w-full h-48 object-cover mb-4 rounded" alt="Product Image">
-            <h2 id="modalProductName" class="text-xl font-semibold mb-2"></h2>
-            <textarea id="modalMessage" class="w-full p-2 border border-gray-300 rounded mb-4 h-24 resize-none"
-                placeholder="Enter your message..."></textarea>
-            <div class="flex justify-between">
-                <button onclick="sendViaWhatsApp()"
+    <!-- Inquiry Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
+        <div
+            class="bg-darkgray rounded-lg max-w-md w-full p-6 relative border border-purple-500 shadow-lg transition hover:shadow-xl hover:border-purple-400">
+            <button type="button" onclick="closeModal()"
+                class="absolute top-2 right-2 text-white text-3xl leading-none hover:text-purple-500">&times;</button>
+            <img id="modalProductImage" class="w-full h-48 object-cover mb-4 rounded" alt="Product Image" />
+            <h2 id="modalProductName" class="text-xl font-semibold mb-2 text-white"></h2>
+            <textarea id="modalMessage" placeholder="Message"
+                class="w-full p-2 border border-purple-500 rounded mb-4 bg-black text-white"></textarea>
+            <div class="flex space-x-4 justify-end">
+                <button type="button" onclick="sendViaWhatsApp()"
                     class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">WhatsApp</button>
-                <button onclick="sendViaEmail()"
-                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Email</button>
+                <button type="button" onclick="sendViaEmail()"
+                    class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Email</button>
             </div>
         </div>
     </div>
 
     <script>
-        let currentProductName = "";
-        let currentProductImage = "";
+        let currentProductName = "", currentProductImage = "";
 
         const contact = {
             whatsapp: "250738019704",
@@ -204,23 +262,89 @@
             window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
         }
 
-        // Scroll to top for "Home" link
         function scrollToSection(id) {
             if (id === "top") window.scrollTo({ top: 0, behavior: 'smooth' });
             else document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Toggle mobile menu
         function toggleMenu() {
             const menu = document.getElementById("mobileMenu");
             menu.classList.toggle("hidden");
         }
 
-        // Mobile menu button
         document.getElementById("navToggle").addEventListener("click", toggleMenu);
 
-    </script>
+        // Lazy load the map iframe for browsers that do not support 'loading' attribute
+        document.addEventListener("DOMContentLoaded", function () {
+            var iframe = document.querySelector('.map-iframe');
+            if (iframe && !('loading' in HTMLIFrameElement.prototype)) {
+                function loadMap() {
+                    if (iframe.src) return;
+                    iframe.src = iframe.getAttribute('data-src');
+                    window.removeEventListener('scroll', onScroll);
+                }
+                function onScroll() {
+                    var rect = iframe.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        loadMap();
+                    }
+                }
+                window.addEventListener('scroll', onScroll);
+                onScroll();
+            } else if (iframe) {
+                // Browsers with 'loading' support
+                iframe.setAttribute('loading', 'lazy');
+                iframe.src = iframe.getAttribute('data-src');
+            }
+        });
 
+
+        const button = document.getElementById("get-recommendation");
+        const skeleton = document.getElementById("skeleton");
+        const outfit = document.getElementById("outfit");
+
+        button.addEventListener("click", () => {
+            const weather = document.getElementById("weather").value;
+            const eventType = document.getElementById("event-type").value;
+            const style = document.getElementById("style").value;
+            const time = document.getElementById("time-of-day").value;
+
+            if (!weather || !eventType || !style || !time) {
+                outfit.classList.remove("hidden");
+                outfit.textContent = "⚠️ Please make sure all fields are selected.";
+                return;
+            }
+
+            skeleton.classList.remove("hidden");
+            outfit.classList.add("hidden");
+
+            setTimeout(() => {
+                skeleton.classList.add("hidden");
+
+                let recommendation = `For a ${style} ${eventType} during a ${weather} ${time}, we suggest: `;
+
+                if (eventType === "formal") {
+                    recommendation += "a well-fitted suit";
+                    if (weather === "hot") recommendation += " in lightweight linen";
+                    else if (weather === "cold") recommendation += " with a wool overcoat";
+                    else recommendation += " with weather-appropriate accessories";
+                    recommendation += ", paired with classic dress shoes.";
+                } else if (eventType === "casual") {
+                    if (style === "classic") recommendation += "chinos and a button-up shirt";
+                    else if (style === "trendy") recommendation += "oversized tee and cargo pants";
+                    else recommendation += "a tracksuit or joggers with a sleek top";
+                    recommendation += weather === "cold" ? ", layered with a bomber or denim jacket." : ", completed with stylish sneakers.";
+                } else if (eventType === "party") {
+                    if (style === "trendy") recommendation += "a designer print shirt, fitted trousers, and loafers.";
+                    else if (style === "classic") recommendation += "a black dress shirt with matching slacks and leather shoes.";
+                    else recommendation += "a bomber jacket, slim-fit jeans, and bold sneakers.";
+                }
+
+                outfit.textContent = recommendation;
+                outfit.classList.remove("hidden");
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>
